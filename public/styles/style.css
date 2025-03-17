@@ -58,3 +58,9 @@ body {
     --bs-btn-hover-bg: #B588F4;
     --bs-btn-hover-border-color: #B588F4;
 }
+
+.title-text{
+    font-weight: 600;
+    font-size: 34px;
+    margin-bottom: 50px;
+}
