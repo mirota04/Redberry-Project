@@ -1,3 +1,60 @@
-.body{
-    background-color: black;
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+
+@font-face {
+    font-family: 'FiraGO';
+    src: url('/fonts/FiraGO-Regular.woff2') format('woff2'),
+         url('/fonts/FiraGO-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'FiraGO';
+    src: url('/fonts/FiraGO-Bold.woff2') format('woff2'),
+         url('/fonts/FiraGO-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+body {
+    font-family: "FiraGO", sans-serif !important;
+}
+
+.container1{
+    margin-right: 120px;
+    margin-left: 120px;
+}
+
+.header-logo-text{
+    font-family: "Fredoka", sans-serif;
+    font-size: 31px;
+    font-weight: 600;
+    color:#8338EC;
+}
+
+.button{
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+.header-button-1{
+    margin-right: 40px;
+    font-size: 15px !important;
+    height: 40px;
+    --bs-btn-color: black !important;
+    --bs-btn-border-color: #8338EC !important;
+    --bs-btn-hover-border-color: #B588F4 !important;
+}
+
+.header-button-2{
+    font-size: 16px !important;
+    height: 40px;
+    --bs-btn-color: #fff !important;
+    --bs-btn-bg: #8338EC !important;
+    --bs-btn-border-color: #8338EC !important;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #B588F4;
+    --bs-btn-hover-border-color: #B588F4;
 }

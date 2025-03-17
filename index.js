@@ -9,7 +9,9 @@ app.use(express.static("./"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+app.get("/", (req, res) => {
+    res.render("index.ejs");
+});
 
 app.listen(port, () => {
     console.log(`Server runnig on port ${port}.`);
