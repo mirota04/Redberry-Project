@@ -11,16 +11,29 @@
           <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 16px;">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">დეპარტამენტი</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                    დეპარტამენტი
+                </a>
+                <ul class="dropdown-menu" id="dropdown-menu1">
+                    <% if (departments.length > 0) { %>
+                        <% departments.forEach(department => { %>
+                          <li class="dropdown-item">
+                            <input type="checkbox" id="dep-<%= department.id %>" class="department-checkbox" value="<%= department.id %>">
+                            <label for="dep-<%= department.id %>"><%= department.name %></label>
+                          </li>
+                        <% }); %>
+                    <% } else { %>
+                        <li class="dropdown-item">No departments available</li>
+                    <% } %>
+                    <li class="button-container">
+                      <button id="confirm-selection" class="btn btn-primary">არჩევა</button>
+                  </li>
                 </ul>
-              </li>
-              <li class="nav-item dropdown">
+            </li>
+            
+              <li class="nav-item dropdown" >
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">პრიორიტეტი</a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" id="dropdown-menu2">
                   <li><a class="dropdown-item" href="#">Action</a></li>
                   <li><a class="dropdown-item" href="#">Another action</a></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -28,7 +41,7 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">თანამშრომელი</a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" id="dropdown-menu3">
                   <li><a class="dropdown-item" href="#">Action</a></li>
                   <li><a class="dropdown-item" href="#">Another action</a></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -41,3 +54,4 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="/script.js"></script>
