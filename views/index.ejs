@@ -29,22 +29,44 @@
                       <button id="confirm-selection" class="btn btn-primary">არჩევა</button>
                   </li>
                 </ul>
-            </li>
+              </li>
             
-              <li class="nav-item dropdown" >
+              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">პრიორიტეტი</a>
                 <ul class="dropdown-menu" id="dropdown-menu2">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <% if (priorities.length > 0) { %>
+                        <% priorities.forEach(priority => { %>
+                            <li class="dropdown-item">
+                                <input type="checkbox" id="priority-<%= priority.id %>" class="priority-checkbox" value="<%= priority.id %>">
+                                <label for="priority-<%= priority.id %>"><%= priority.name %></label>
+                            </li>
+                        <% }); %>
+                    <% } else { %>
+                        <li class="dropdown-item">No priorities available</li>
+                    <% } %>
+                    <li class="button-container">
+                        <button id="confirm-priority" class="btn btn-primary">არჩევა</button>
+                    </li>
                 </ul>
-              </li>
+            </li>
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">თანამშრომელი</a>
                 <ul class="dropdown-menu" id="dropdown-menu3">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <% if (employees.length > 0) { %>
+                      <% employees.forEach(employee => { %>
+                          <li class="dropdown-item">
+                              <input type="checkbox" id="employee-<%= employee.id %>" class="employee-checkbox" value="<%= employee.id %>">
+                              <img src="<%= employee.avatar %>" alt="<%= employee.name %>" class="employee-avatar">
+                              <label for="employee-<%= employee.id %>"><%= employee.name %> <%= employee.surname %></label>
+                          </li>
+                      <% }); %>
+                    <% } else { %>
+                      <li class="dropdown-item">No employees available</li>
+                    <% } %>
+                    <li class="button-container">
+                      <button id="confirm-employee" class="btn btn-primary">არჩევა</button>
+                    </li>
                 </ul>
               </li>
             </ul>
@@ -53,5 +75,6 @@
     </nav>
 </div>
 
+<script src="/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="/script.js"></script>

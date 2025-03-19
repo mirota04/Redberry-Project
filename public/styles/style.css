@@ -69,7 +69,7 @@ body {
     background-color: #fff !important;
     border-radius: 10px !important;
     border: 1px solid #DEE2E6 !important;
-
+    font-size: 16px !important;
 }
 
 .navbar-nav {
@@ -188,13 +188,96 @@ body {
 }
 
 .department-checkbox:checked + label::before {
-    background-color: #212529;
+    background-color: white;
     border-color: #212529;
     content: "✔";
-    color: white;
+    color: #212529;
     font-size: 12px;
     text-align: center;
     line-height: 16px;
+}
+
+.priority-checkbox {
+    display: none;
+}
+
+.priority-checkbox + label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    color: #212529;
+}
+
+.priority-checkbox + label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid #212529;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.priority-checkbox:checked + label::before {
+    background-color: white;
+    border-color: #212529;
+    content: "✔";
+    color: #212529;
+    font-size: 12px;
+    text-align: center;
+    line-height: 16px;
+}
+
+.employee-checkbox {
+    display: none;
+    margin-right: 10px;
+}
+
+.employee-checkbox + label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    color: #212529;
+}
+
+.employee-checkbox + label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid #212529;
+    border-radius: 3px;
+    background-color: white;
+}
+
+.employee-checkbox:checked + label::before {
+    background-color: white;
+    border-color: #212529;
+    content: "✔";
+    color: #212529;
+    font-size: 12px;
+    text-align: center;
+    line-height: 16px;
+}
+
+.employee-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 .dropdown-menu input,
@@ -223,3 +306,4 @@ body {
 .btn-primary:hover {
     background-color: #B588F4 !important;
 }
+
