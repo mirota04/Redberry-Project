@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedFiltersContainer = document.getElementById("selected-filters");
     const capsuleTemplate = document.getElementById("capsule-template");
     const clearFiltersButton = document.getElementById("clear-filters");
-    const selectedFilters = new Map(); // Avoid duplicates
+    const selectedFilters = new Map();
 
     function updateClearButtonVisibility() {
         clearFiltersButton.style.display = selectedFilters.size > 0 ? "inline-block" : "none";
@@ -32,15 +32,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function addFilter(type, id, name) {
         const key = `${type}-${id}`;
 
-        // **Extra safeguard against duplicates using querySelector**
         if (document.querySelector(`.filter-capsule[data-type="${type}"][data-id="${id}"]`)) {
-            return; // Skip if already displayed
+            return;
         }
 
         if (!selectedFilters.has(key)) {
             selectedFilters.set(key, name);
 
-            // Clone template and set attributes
             const newCapsule = capsuleTemplate.cloneNode(true);
             newCapsule.id = key;
             newCapsule.dataset.type = type;
@@ -48,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
             newCapsule.querySelector(".filter-text").textContent = name;
             newCapsule.classList.remove("hidden");
 
-            // Remove filter on click
             newCapsule.querySelector(".remove-filter").addEventListener("click", function () {
                 selectedFilters.delete(key);
                 newCapsule.remove();
@@ -83,42 +80,39 @@ document.addEventListener("DOMContentLoaded", function () {
         updateClearButtonVisibility();
     }
 
-    // Ensure filters are removed if checkboxes are unchecked manually
     document.querySelectorAll(".department-checkbox, .priority-checkbox, .employee-checkbox").forEach(checkbox => {
         checkbox.addEventListener("change", removeFilterIfUnchecked);
     });
 
-    // Event listeners for filter selections
     document.getElementById("confirm-selection").addEventListener("click", function () {
         document.querySelectorAll(".department-checkbox:checked").forEach(checkbox => {
             addFilter("department", checkbox.value, getCheckboxLabel(checkbox));
         });
-        closeDropdown("dropdown-menu1"); // Close dropdown after selecting
+        closeDropdown("dropdown-menu1");
     });
     
     document.getElementById("confirm-priority").addEventListener("click", function () {
         document.querySelectorAll(".priority-checkbox:checked").forEach(checkbox => {
             addFilter("priority", checkbox.value, getCheckboxLabel(checkbox));
         });
-        closeDropdown("dropdown-menu2"); // Close dropdown after selecting
+        closeDropdown("dropdown-menu2");
     });
     
     document.getElementById("confirm-employee").addEventListener("click", function () {
         document.querySelectorAll(".employee-checkbox:checked").forEach(checkbox => {
             addFilter("employee", checkbox.value, getCheckboxLabel(checkbox));
         });
-        closeDropdown("dropdown-menu3"); // Close dropdown after selecting
+        closeDropdown("dropdown-menu3");
     });    
 
-    // "გასუფთავება" Button - Remove all filters
     clearFiltersButton.addEventListener("click", function () {
         selectedFilters.clear();
-        selectedFiltersContainer.innerHTML = ""; // Remove all capsules
+        selectedFiltersContainer.innerHTML = "";
         document.querySelectorAll(".department-checkbox, .priority-checkbox, .employee-checkbox").forEach(checkbox => {
             checkbox.checked = false;
         });
         updateClearButtonVisibility();
     });
 
-    updateClearButtonVisibility(); // Initial check on page load
+    updateClearButtonVisibility();
 });

@@ -76,7 +76,6 @@
 
     <div class="selected-filters-container">
       <div id="selected-filters" class="selected-filters">
-          <!-- Capsule Template (Hidden) -->
           <span class="filter-capsule hidden" id="capsule-template">
               <span class="filter-text"></span>
               <img src="/images/x.png" class="remove-filter" alt="Remove">
@@ -84,6 +83,29 @@
       </div>
       <button id="clear-filters" class="btn hidden clear-filters" style="color: #343A40; padding-top: 3px;">გასუფთავება</button>
     </div>
+    
+    <div id="task-statuses" class="task-statuses">
+      <% statuses.forEach((status) => { %>
+          <div class="task-status status-<%= status.id %>">
+              <%= status.name %>
+          </div>
+      <% }); %>
+    </div>
+
+    <div class="task-board">
+      <% statuses.forEach(status => { %>
+          <div class="task-column" data-status-id="<%= status.id %>">
+              <% tasks.filter(task => task.status.id === status.id).forEach(task => { %>
+                  <div class="task-card task-card-status-<%= task.status.id %>">
+                      <h3 class="task-title"><%= task.title %></h3>
+                      <p class="task-description"><%= task.description %></p>
+                      <p class="task-priority">Priority: <%= task.priority.name %></p>
+                      <p class="task-employee">Assigned to: <%= task.employee.name %> <%= task.employee.surname %></p>
+                  </div>
+              <% }) %>
+          </div>
+      <% }) %>
+  </div>
   
 </div>
 

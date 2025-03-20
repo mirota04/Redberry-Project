@@ -27,10 +27,16 @@ app.get("/", async (req, res) => {
         const employeesResponse = await axios.get(API_URL + "/employees", config);
         const employees = employeesResponse.data;
 
-        res.render("index.ejs", { departments, priorities, employees });
+        const statusesResponse = await axios.get(API_URL + "/statuses");
+        const statuses = statusesResponse.data;
+
+        const tasksResponse = await axios.get(API_URL + "/tasks", config);
+        const tasks = tasksResponse.data;
+
+        res.render("index.ejs", { departments, priorities, employees, statuses, tasks });
     }catch(error){
         console.error("Error fetching departments:", error);
-        res.render("index.ejs", { departments: [], priorities: [], employees: [] });
+        res.render("index.ejs", { departments: [], priorities: [], employees: [], statuses: [], tasks: [] });
     }
 });
 
