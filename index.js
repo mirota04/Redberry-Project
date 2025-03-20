@@ -9,7 +9,7 @@ const API_URL = "https://momentum.redberryinternship.ge/api";
 const yourBearerToken = "9e77b40d-621c-4675-9e4a-7d811a754ed5";
 const config = {
     headers: { Authorization: `Bearer ${yourBearerToken}` },
-  };
+};
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
@@ -30,7 +30,7 @@ app.get("/", async (req, res) => {
         res.render("index.ejs", { departments, priorities, employees });
     }catch(error){
         console.error("Error fetching departments:", error);
-        res.render("index.ejs", { departments: [] });
+        res.render("index.ejs", { departments: [], priorities: [], employees: [] });
     }
 });
 
