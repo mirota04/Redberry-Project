@@ -412,7 +412,7 @@ body {
 
 .task-card {
     height: 200px;
-    padding: 10px;
+    padding: 15px 20px;
     margin-top: 30px;
     border-radius: 15px;
     color: black;
@@ -423,3 +423,56 @@ body {
 .task-card-status-2 { border: 2px solid #FB5607; }
 .task-card-status-3 { border: 2px solid #FF006E; }
 .task-card-status-4 { border: 2px solid #3A86FF; } 
+
+.task-card-header {
+    display: flex;
+    font-size: 12px;
+    justify-content: space-between;
+}
+
+.task-priority-1 {
+    color: #08A508;
+    border: 0.5px solid #08A508;
+    padding: 4px 7px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.task-priority-2 {
+    color: #FFBE0B;
+    border: 0.5px solid #FFBE0B;
+    padding: 4px 7px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.task-priority-3 {
+    color: #FA4D4D;
+    border: 0.5px solid #FA4D4D;
+    padding: 4px 7px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.task-department-box {
+    text-align: center;
+    color: white;
+    border-radius: 15px;
+    padding: 5px 0;
+    width: 100px;
+}
+
+.task-department-1 {background-color: #fd6a6a;}
+.task-department-2 {background-color: #fa66ff;}
+.task-department-3 {background-color: #3683ff;}
+.task-department-4 {background-color: #FD9A6A;}
+.task-department-5 {background-color: #89B6FF;}
+.task-department-6 {background-color: #FFD86D;}
+.task-department-7 {background-color: #FF66A8;}
+
+.date {
+    text-align: center;
+    padding: 5px 0;
+    font-weight: bold;
+    margin-left: auto;
+}

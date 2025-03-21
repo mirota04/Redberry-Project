@@ -97,9 +97,48 @@
           <div class="task-column" data-status-id="<%= status.id %>">
               <% tasks.filter(task => task.status.id === status.id).forEach(task => { %>
                   <div class="task-card task-card-status-<%= task.status.id %>">
-                      <h3 class="task-title"><%= task.title %></h3>
+                    <div class="task-card-header">
+                      <div class="task-priority-<%= task.priority.id %>">
+                        <img src="/images/priority-icon-<%= task.priority.id %>.png" style="width: 16px;">
+                        <%= task.priority.name %>
+                      </div>
+                      <div class="task-department-box task-department-<%= task.department.id %>">
+                        <% if(task.department.id === 1){ %>
+                          <% let name = "ადმინისტრაცია" %>
+                          <%= name %>
+                        <% } %>
+                        <% if(task.department.id === 2){ %>
+                          <% let name = "HR დეპ." %>
+                          <%= name %>
+                        <% } %>
+                        <% if(task.department.id === 3){ %>
+                          <% let name = "ფინანსები" %>
+                          <%= name %>
+                        <% } %>
+                        <% if(task.department.id === 4){ %>
+                          <% let name = "მარკეტინგი" %>
+                          <%= name %>
+                        <% } %>
+                        <% if(task.department.id === 5){ %>
+                          <% let name = "ლოჯისტიკა" %>
+                          <%= name %>
+                        <% } %>
+                        <% if(task.department.id === 6){ %>
+                          <% let name = "ინფ. ტექ." %>
+                          <%= name %>
+                        <% } %>
+                        <% if(task.department.id === 7){ %>
+                          <% let name = "მედია" %>
+                          <%= name %>
+                        <% } %>
+                      </div>
+                      <div class="date"><%= task.due_date.substr(0, 10) %></div>
+                    </div>
+                    <div class="">
+
+                    </div>
+                      <h3 class="task-title"><%= task.name %></h3>
                       <p class="task-description"><%= task.description %></p>
-                      <p class="task-priority">Priority: <%= task.priority.name %></p>
                       <p class="task-employee">Assigned to: <%= task.employee.name %> <%= task.employee.surname %></p>
                   </div>
               <% }) %>
