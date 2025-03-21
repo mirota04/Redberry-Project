@@ -154,8 +154,63 @@
               <% }) %>
           </div>
       <% }) %>
-  </div>
-  
+    </div>
+    
+    <!-- Modal Backdrop -->
+    <div id="modal-backdrop" class="modal-backdrop hidden"></div>
+
+    <!-- Employee Creation Modal -->
+    <div id="employee-modal" class="employee-modal hidden">
+      <div class="modal-content">
+        <div class="modal-header-employee">
+          <button class="close-modal"><img src="/images/Cancel.png" alt=""></button>
+        </div>
+        <div class="modal-body-employee">
+          <h2 class="modal-title-add">თანამშრომლის დამატება</h2>
+
+          <form action="/employees" method="post" id="employee-form" enctype="multipart/form-data">
+            <div class="modal-name">
+              <div>
+                <label for="name">სახელი*</label>
+                <input type="text" id="first_name" name="name" required>
+              </div>
+        
+              <div>
+                <label for="surname">გვარი*</label>
+                <input type="text" id="last_name" name="surname" required>
+              </div>
+            </div>
+
+            <div class="avatar-container">
+              <label for="avatar">ავატარი*</label>
+              <div class="avatar-upload" id="avatar-upload">
+                <input type="file" id="avatar" name="avatar" accept="image/*" hidden>
+                <div class="avatar-preview" id="avatar-preview">
+                  <img id="avatar-img" src="" alt="Uploaded Avatar">
+                  <button type="button" id="remove-avatar" class="remove-avatar">&times;</button>
+                </div>
+                <p id="upload-text">დააწკაპუნეთ სურათის ასატვირთად</p>
+              </div>
+            </div>
+            
+            <div class="modal-department">
+              <label for="department_id">დეპარტამენტი*</label>
+              <select id="department" name="department_id" required>
+                <% departments.forEach(dept => { %>
+                  <option value="<%= dept.id %>"><%= dept.name %></option>
+                <% }); %>
+              </select>
+            </div>
+
+            <div class="modal-actions">
+            <button type="submit">დაამატე თანამშრომელი</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+
+
 </div>
 
 <script src="/script.js"></script>

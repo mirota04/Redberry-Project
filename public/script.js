@@ -115,4 +115,91 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     updateClearButtonVisibility();
+
+    const modal = document.getElementById("employee-modal");
+    const backdrop = document.getElementById("modal-backdrop");
+    const openModalBtn = document.querySelector(".header-button-1");
+    const closeModalBtns = document.querySelectorAll(".close-modal");
+    const form = document.getElementById("employee-form");
+    const yourBearerToken = "9e77b40d-621c-4675-9e4a-7d811a754ed5";
+
+    // Show modal
+    openModalBtn.addEventListener("click", function () {
+        modal.classList.remove("hidden");
+        backdrop.classList.remove("hidden");
+    });
+
+    // Close modal
+    closeModalBtns.forEach(btn => {
+        btn.addEventListener("click", function () {
+            modal.classList.add("hidden");
+            backdrop.classList.add("hidden");
+        });
+    });
+
+    // Close modal when clicking outside
+    backdrop.addEventListener("click", function () {
+        modal.classList.add("hidden");
+        backdrop.classList.add("hidden");
+    });
+
+    // Form Submission
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+    
+        const formData = new FormData(form);
+    
+        try {
+            const response = await fetch("/employees", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${yourBearerToken}`,
+                    // Do not set Content-Type; let the browser set it for file uploads
+                },
+                body: formData,
+            });
+    
+            if (response.ok) {
+                alert("Employee successfully added!");
+                modal.classList.add("hidden");
+                backdrop.classList.add("hidden");
+                form.reset();
+            } else {
+                const errorText = await response.text();
+                console.error("Server Error:", errorText);
+                alert("Error: " + errorText);
+            }
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("Error occurred during submission!");
+        }
+    });
 });
+
+document.getElementById('avatar-upload').addEventListener('click', function() {
+    document.getElementById('avatar').click();
+  });
+  
+  document.getElementById('avatar').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('avatar-img').src = e.target.result;
+        document.getElementById('avatar-preview').style.display = "flex";
+        document.getElementById('remove-avatar').style.display = "block";
+        document.getElementById('upload-text').style.display = "none";
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+  
+  document.getElementById('remove-avatar').addEventListener('click', function(event) {
+    event.stopPropagation();
+    document.getElementById('avatar-img').src = "";
+    document.getElementById('avatar-preview').style.display = "none";
+    document.getElementById('remove-avatar').style.display = "none";
+    document.getElementById('upload-text').style.display = "block";
+    document.getElementById('avatar').value = "";
+  });
+  

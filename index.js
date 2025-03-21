@@ -1,6 +1,7 @@
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
+import multer from "multer";
 
 const app = express();
 const port = 3000;
@@ -11,7 +12,10 @@ const config = {
     headers: { Authorization: `Bearer ${yourBearerToken}` },
 };
 
+const upload = multer({ dest: "uploads/" });
+
 app.use(express.static("public"));
+app.use(express.json());
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -39,6 +43,28 @@ app.get("/", async (req, res) => {
         res.render("index.ejs", { departments: [], priorities: [], employees: [], statuses: [], tasks: [] });
     }
 });
+
+app.post("/employees", upload.single("avatar"), async (req, res) => {
+    try {
+        const employeeData = {
+            name: req.body.name,
+            surname: req.body.surname,
+            avatar: req.body.avatar,
+            department_id: req.body.department_id,
+        };
+
+        if (req.file) {
+            employeeData.avatar = req.file; // Store the file data if uploaded
+        }
+
+        const response = await axios.post(API_URL + "/employees", employeeData, config);
+        res.status(200).send(response.data);
+    } catch (error) {
+        console.error("Error adding employee:", error);
+        res.status(500).send("Failed to add employee.");
+    }
+});
+
 
 app.listen(port, () => {
     console.log(`Server runnig on port ${port}.`);
