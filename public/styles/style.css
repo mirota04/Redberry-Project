@@ -599,13 +599,14 @@ body {
   
 .remove-avatar {
     position: absolute;
-    top: 70%;
+    top: 80%;
     right: 50%;
     background: white;
     border-radius: 50%;
     border: none;
     cursor: pointer;
     display: none;
+    height: 20px;
 }  
   
 .modal-department {
@@ -620,7 +621,6 @@ body {
     margin-bottom: 8px;
 }
 
-/* Modal Backdrop */
 .modal-backdrop {
     position: fixed !important;
     top: 0 !important;
@@ -632,7 +632,6 @@ body {
     z-index: 1000 !important;
 }
 
-/* Modal Container */
 .employee-modal {
     margin-top: 25px;
     position: fixed;
@@ -651,12 +650,10 @@ body {
     align-items: center;
 }
 
-/* Hide modal initially */
 .hidden {
     display: none;
 }
 
-/* Close Button */
 .close-modal {
     position: absolute;
     top: 15px;
@@ -667,7 +664,6 @@ body {
     cursor: pointer;
 }
 
-/* Form Styles */
 .employee-modal form {
     display: flex;
     flex-direction: column;

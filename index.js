@@ -54,7 +54,7 @@ app.post("/employees", upload.single("avatar"), async (req, res) => {
         };
 
         if (req.file) {
-            employeeData.avatar = req.file; // Store the file data if uploaded
+            employeeData.avatar = req.file;
         }
 
         const response = await axios.post(API_URL + "/employees", employeeData, config);

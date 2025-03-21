@@ -123,13 +123,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("employee-form");
     const yourBearerToken = "9e77b40d-621c-4675-9e4a-7d811a754ed5";
 
-    // Show modal
     openModalBtn.addEventListener("click", function () {
         modal.classList.remove("hidden");
         backdrop.classList.remove("hidden");
     });
 
-    // Close modal
     closeModalBtns.forEach(btn => {
         btn.addEventListener("click", function () {
             modal.classList.add("hidden");
@@ -137,13 +135,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Close modal when clicking outside
     backdrop.addEventListener("click", function () {
         modal.classList.add("hidden");
         backdrop.classList.add("hidden");
     });
 
-    // Form Submission
     form.addEventListener("submit", async function (event) {
         event.preventDefault();
     
@@ -154,7 +150,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${yourBearerToken}`,
-                    // Do not set Content-Type; let the browser set it for file uploads
                 },
                 body: formData,
             });
@@ -176,30 +171,41 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.getElementById('avatar-upload').addEventListener('click', function() {
-    document.getElementById('avatar').click();
+document.addEventListener("DOMContentLoaded", function () {
+  const avatarUpload = document.getElementById("avatar-upload");
+  const avatarInput = document.getElementById("avatar");
+  const avatarPreview = document.getElementById("avatar-preview");
+  const avatarImg = document.getElementById("avatar-img");
+  const removeAvatar = document.getElementById("remove-avatar");
+  const uploadText = document.getElementById("upload-text");
+
+  avatarUpload.addEventListener("click", function (event) {
+    if (event.target !== removeAvatar) {
+      avatarInput.click();
+    }
   });
-  
-  document.getElementById('avatar').addEventListener('change', function(event) {
+
+  avatarInput.addEventListener("change", function (event) {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
-      reader.onload = function(e) {
-        document.getElementById('avatar-img').src = e.target.result;
-        document.getElementById('avatar-preview').style.display = "flex";
-        document.getElementById('remove-avatar').style.display = "block";
-        document.getElementById('upload-text').style.display = "none";
+      reader.onload = function (e) {
+        avatarImg.src = e.target.result;
+        avatarPreview.style.display = "flex";
+        removeAvatar.style.display = "block";
+        uploadText.style.display = "none";
       };
       reader.readAsDataURL(file);
     }
   });
-  
-  document.getElementById('remove-avatar').addEventListener('click', function(event) {
-    event.stopPropagation();
-    document.getElementById('avatar-img').src = "";
-    document.getElementById('avatar-preview').style.display = "none";
-    document.getElementById('remove-avatar').style.display = "none";
-    document.getElementById('upload-text').style.display = "block";
-    document.getElementById('avatar').value = "";
+
+  removeAvatar.addEventListener("click", function (event) {
+    event.stopPropagation(); 
+    avatarImg.src = "";
+    avatarPreview.style.display = "none";
+    removeAvatar.style.display = "none";
+    uploadText.style.display = "block";
+    avatarInput.value = "";
   });
+});
   
