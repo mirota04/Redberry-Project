@@ -411,7 +411,10 @@ body {
 }
 
 .task-card {
-    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 220px;
     padding: 15px 20px;
     margin-top: 30px;
     border-radius: 15px;
@@ -419,10 +422,10 @@ body {
     font-size: 14px;
 }
 
-.task-card-status-1 { border: 2px solid #F7BC30; }
-.task-card-status-2 { border: 2px solid #FB5607; }
-.task-card-status-3 { border: 2px solid #FF006E; }
-.task-card-status-4 { border: 2px solid #3A86FF; } 
+.task-card-status-1 { border: 1px solid #F7BC30; }
+.task-card-status-2 { border: 1px solid #FB5607; }
+.task-card-status-3 { border: 1px solid #FF006E; }
+.task-card-status-4 { border: 1px solid #3A86FF; } 
 
 .task-card-header {
     display: flex;
@@ -475,4 +478,28 @@ body {
     padding: 5px 0;
     font-weight: bold;
     margin-left: auto;
+}
+
+.task-card-body {
+    padding: 0 5px;
+}
+
+.task-title {
+    margin-bottom: 12px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.task-description {
+    color: #343A40;
+    font-size: 14px;
+}
+
+.task-card-footer {
+    justify-content: flex-end;
+}
+
+.task-employee-avatar {
+    border-radius: 50%;
+    width: 31px;
 }

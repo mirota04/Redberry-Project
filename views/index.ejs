@@ -134,12 +134,22 @@
                       </div>
                       <div class="date"><%= task.due_date.substr(0, 10) %></div>
                     </div>
-                    <div class="">
 
+                    <div class="task-card-body">
+                      <div class="task-title"><%= task.name %></div>
+                      <div class="task-description">
+                        <% if(task.description.length >= 100) {%>
+                          <% let text = task.description.substr(0, 100) + "..." %>
+                          <%= text %>
+                        <% }else{ %>
+                          <%= task.description %>
+                        <% } %>
+                      </div>
                     </div>
-                      <h3 class="task-title"><%= task.name %></h3>
-                      <p class="task-description"><%= task.description %></p>
-                      <p class="task-employee">Assigned to: <%= task.employee.name %> <%= task.employee.surname %></p>
+
+                    <div class="task-card-footer">
+                      <img src="<%= task.employee.avatar %>" class="task-employee-avatar">
+                    </div>
                   </div>
               <% }) %>
           </div>
